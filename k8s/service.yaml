@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: floricultura-service
+  namespace: floricultura
+  labels:
+    app: floricultura-web
+spec:
+  # Opção 1: 'NodePort' (padrão em clusters locais bare-metal / kubeadm / k3s / microk8s)
+  # O roteador/firewall faz port-forward da porta pública 80 para a porta do nó (ex: 30080)
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    nodePort: 30080 # Porta acessível no IP de cada nó do cluster
+    protocol: TCP
+  # Se o seu cluster local tiver MetalLB instalado para IP dedicado, troque para:
+  # type: LoadBalancer
+  selector:
+    app: floricultura-web

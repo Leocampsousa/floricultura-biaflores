@@ -1,0 +1,8 @@
+.git
+.gitignore
+.dockerignore
+.gemini
+.vscode
+k8s/
+*.md
+docker-compose.yml

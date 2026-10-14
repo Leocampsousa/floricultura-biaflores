@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: floricultura-netpol
+  namespace: floricultura
+spec:
+  podSelector:
+    matchLabels:
+      app: floricultura-web
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Permite tráfego apenas na porta HTTP vindo do Ingress / LoadBalancer
+  - from: []
+    ports:
+    - protocol: TCP
+      port: 80
+  egress:
+  # Permite resolução DNS interna para o cluster
+  - to: []
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
