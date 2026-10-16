@@ -437,6 +437,11 @@ h1, h2, h3, h4, h5 {
   background: #e8f8ed;
   color: #128c7e;
   border: 1px solid #b7e8c7;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
 }
 
 .btn-whatsapp-header:hover {
@@ -444,6 +449,34 @@ h1, h2, h3, h4, h5 {
   color: #ffffff;
   border-color: var(--zap-color);
   transform: translateY(-2px);
+}
+
+/* No mobile, oculta o número longo e mantém apenas o ícone do WhatsApp */
+@media (max-width: 768px) {
+  .header-zap-text {
+    display: none;
+  }
+
+  .btn-whatsapp-header {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--zap-color);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  }
+
+  .btn-whatsapp-header .icon-btn {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    fill: #ffffff;
+  }
 }
 
 /* Botão Hamburguer Mobile */
@@ -1858,7 +1891,7 @@ h1, h2, h3, h4, h5 {
 
 .footer-bottom-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-block: 18px;
+  padding-block: 20px;
   font-size: 0.84rem;
   color: #9f888f;
 }
@@ -1868,14 +1901,20 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .footer-bottom-bar {
+    padding-top: 20px;
+    padding-bottom: calc(160px + env(safe-area-inset-bottom, 0));
+  }
+
   .footer-bottom-inner {
     flex-direction: column;
     text-align: center;
-    padding-bottom: calc(78px + env(safe-area-inset-bottom, 0));
+    gap: 10px;
+    padding-inline: 16px;
   }
 }
 
@@ -1903,6 +1942,19 @@ h1, h2, h3, h4, h5 {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+  .floating-actions-container {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0));
+    right: 16px;
+    gap: 10px;
+  }
+
+  .fab {
+    width: 52px;
+    height: 52px;
+  }
 }
 
 .fab:hover, .fab:active {
