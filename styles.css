@@ -1388,126 +1388,193 @@ h1, h2, h3, h4, h5 {
 }
 
 /* --------------------------------------------------------------------------
-   12. SEÇÃO DE ENTREGA & MAPA
+   12. SEÇÃO DE ENTREGA & MAPA (DESIGN PREMIUM UNIFICADO)
    -------------------------------------------------------------------------- */
 .section-delivery {
   padding-block: clamp(60px, 8vw, 100px);
   background-color: var(--bg-surface-alt);
 }
 
-.delivery-container {
-  display: grid;
-  gap: 48px;
-  align-items: center;
-}
-
-@media (min-width: 992px) {
-  .delivery-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-  }
-}
-
-.delivery-lead {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 28px;
-}
-
-.delivery-features-grid {
+/* Grade de 4 Cards de Diferenciais */
+.delivery-cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
-  margin-bottom: 34px;
+  gap: 24px;
+  margin-bottom: 48px;
 }
 
-@media (min-width: 560px) {
-  .delivery-features-grid {
-    grid-template-columns: 1fr 1fr;
+@media (min-width: 640px) {
+  .delivery-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.delivery-feature {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  background: #ffffff;
-  padding: 16px;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(116, 27, 52, 0.08);
+@media (min-width: 1024px) {
+  .delivery-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-.feature-icon {
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-.delivery-feature h4 {
-  font-size: 0.95rem;
-  color: var(--color-primary-dark);
-  margin-bottom: 3px;
-}
-
-.delivery-feature p {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Card do Mapa */
-.delivery-map-card {
-  background: #ffffff;
+.delivery-card {
+  background: var(--bg-surface);
   border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(116, 27, 52, 0.1);
-}
-
-.map-wrapper {
-  width: 100%;
-  height: 320px;
-}
-
-.map-card-info {
-  padding: 24px;
-}
-
-.map-card-header {
+  padding: 28px 24px;
+  border: 1px solid rgba(116, 27, 52, 0.08);
+  box-shadow: var(--shadow-sm);
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.delivery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-gold-border);
+}
+
+.delivery-card-top {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
   margin-bottom: 18px;
 }
 
-.map-title {
-  font-size: 1.18rem;
-  color: var(--color-primary);
-  margin-bottom: 4px;
+.delivery-icon-bubble {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-surface-alt);
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  border: 1px solid rgba(116, 27, 52, 0.08);
 }
 
-.map-address {
-  font-size: 0.9rem;
+.delivery-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--color-gold-light);
+  color: var(--color-gold-dark);
+  border: 1px solid var(--color-gold-border);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.delivery-card-title {
+  font-family: var(--font-sans);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 8px;
+}
+
+.delivery-card-text {
+  font-size: 0.92rem;
   color: var(--text-muted);
+  line-height: 1.55;
   margin: 0;
 }
 
-.map-status-pill {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #128c7e;
-  background: #e8f8ed;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  white-space: nowrap;
+/* Bloco Unificado: Informações da Loja + Mapa Integrado */
+.delivery-showcase {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(212, 163, 89, 0.35);
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
 }
 
-.map-actions {
+@media (min-width: 992px) {
+  .delivery-showcase {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+
+.delivery-showcase-info {
+  padding: clamp(28px, 4vw, 44px);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.delivery-badge-store {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.delivery-showcase-title {
+  font-size: clamp(1.5rem, 2.5vw, 1.95rem);
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.delivery-showcase-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.delivery-checklist {
+  display: grid;
   gap: 12px;
+  margin-bottom: 32px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-sage-light);
+  color: var(--color-sage);
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.delivery-showcase-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   flex-wrap: wrap;
+}
+
+.delivery-showcase-map {
+  width: 100%;
+  min-height: 360px;
+  background: #f0ebe5;
+  position: relative;
+}
+
+.delivery-showcase-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
